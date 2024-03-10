@@ -16,9 +16,7 @@ const VideoContainer = () => {
   }, [videoList]);
 
   useEffect(() => {
-    if (Object.keys(videoList).length === 0) {
-      dispatch(getVideoList(YOUTUBE_VIDEO_API));
-    }
+    dispatch(getVideoList(YOUTUBE_VIDEO_API));
   }, [dispatch]);
 
   return (
