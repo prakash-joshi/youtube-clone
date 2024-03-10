@@ -13,7 +13,7 @@ const VideoCard = (props) => {
   };
 
   return (
-    <div className="relative my-2">
+    <div className="relative m-auto cursor-pointer">
       <img src={thumbnails?.medium?.url} alt="thumbnail" className="rounded-xl" />
       {/* <span className="absolute bottom-1 right-1 bg-black text-xs font-medium px-1 py-[2px] rounded-lg text-cyan-100">
         {duration}

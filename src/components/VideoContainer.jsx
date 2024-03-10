@@ -3,6 +3,7 @@ import { YOUTUBE_VIDEO_API } from "../utils/constants";
 import { getVideoList } from "../store/actions/videoList.actions";
 import VideoCard from "./VideoCard";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -22,9 +23,11 @@ const VideoContainer = () => {
     <div className="flex flex-wrap justify-between">
       {videos &&
         videos.length > 0 &&
-        videos.map((video) => {
-          return <VideoCard key={video.etag} info={video} />;
-        })}
+        videos.map((video) => (
+          <Link key={video.etag} to={"/watch?v=" + video.id}>
+            <VideoCard info={video} />
+          </Link>
+        ))}
     </div>
   );
 };

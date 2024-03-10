@@ -1,11 +1,19 @@
+import { useDispatch } from "react-redux";
 import { imageLinks } from "../utils/constants";
+import { togglesideBarMenu } from "../store/actions/sideBar.action";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const toggleSideMenuHandler = () => {
+    dispatch(togglesideBarMenu());
+  };
+
   return (
     <section>
-      <div className="grid grid-flow-col p-5">
+      <div className="grid grid-flow-col p-5 shadow-lg">
         <div className="flex col-span-1">
-          <img className="h-12" alt="menu" src={imageLinks.hamberg_Icon} />
+          <img className="h-12" alt="menu" src={imageLinks.hamberg_Icon} onClick={toggleSideMenuHandler} />
           <img className="h-12" alt="Youtube" src={imageLinks.Youtube_Icon} />
         </div>
         <div className="col-span-10 flex">
