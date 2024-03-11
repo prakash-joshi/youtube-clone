@@ -5,6 +5,8 @@ export default function sideBarMenuReducer(state = initialState.sideBarMenu, act
   switch (action.type) {
     case types.SIDE_BAR_MENU_VISIBLE:
       return { ...state, isSideMenuExpanded: !state.isSideMenuExpanded };
+    case types.SIDE_BAR_MENU_COLLPASED:
+      return { ...state, isSideMenuExpanded: false };
     default:
       return state;
   }

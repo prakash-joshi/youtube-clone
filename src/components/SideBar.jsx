@@ -5,12 +5,12 @@ const SideBar = () => {
   return (
     sideBarMenu &&
     sideBarMenu?.isSideMenuExpanded && (
-      <div className="p-5 shadow-lg w-full">
+      <div className="p-5 shadow-lg max-w-fit">
         <h1 className="font-bold">Home</h1>
         <h1 className="font-bold">Shorts</h1>
         <h1 className="font-bold">Subscription</h1>
         ----------------
-        <h1 className="font-bold">You ></h1>
+        <h1 className="font-bold">{"You >"}</h1>
         <ul>
           <li>Your Channel</li>
           <li>History</li>
