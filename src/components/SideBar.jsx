@@ -5,8 +5,9 @@ const SideBar = () => {
   return (
     sideBarMenu &&
     sideBarMenu?.isSideMenuExpanded && (
-      <div className="p-5 shadow-lg max-w-fit">
-        <h1 className="font-bold">Home</h1>
+      <div className="fixed w-[14%] pt-3 top-14 left-0 pr-6 pl-2 h-full overflow-y-auto bg-white z-50">
+        {/* <h1 className="font-bold">Home</h1> */}
+        <img className="pr-4" src="./home.svg" alt="home" /> Home
         <h1 className="font-bold">Shorts</h1>
         <h1 className="font-bold">Subscription</h1>
         ----------------
@@ -19,6 +20,36 @@ const SideBar = () => {
         </ul>
         ----------------
         <h1 className="font-bold">Explore</h1>
+        <ul>
+          <li>Trending</li>
+          <li>Shopping</li>
+          <li>Music</li>
+          <li>Film</li>
+          <li>Gaming</li>
+          <li>News</li>
+          <li>Sport</li>
+          <li>Learning</li>
+        </ul>
+        <ul>
+          <li>Trending</li>
+          <li>Shopping</li>
+          <li>Music</li>
+          <li>Film</li>
+          <li>Gaming</li>
+          <li>News</li>
+          <li>Sport</li>
+          <li>Learning</li>
+        </ul>
+        <ul>
+          <li>Trending</li>
+          <li>Shopping</li>
+          <li>Music</li>
+          <li>Film</li>
+          <li>Gaming</li>
+          <li>News</li>
+          <li>Sport</li>
+          <li>Learning</li>
+        </ul>
         <ul>
           <li>Trending</li>
           <li>Shopping</li>

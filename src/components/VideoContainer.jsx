@@ -19,10 +19,10 @@ const VideoContainer = () => {
     if (Object.keys(videoList).length === 0) {
       dispatch(getVideoList(YOUTUBE_VIDEO_API));
     }
-  }, [dispatch]);
+  }, [dispatch, videoList]);
 
   return (
-    <div className="flex flex-wrap justify-between">
+    <div className="flex flex-wrap justify-evenly">
       {videos &&
         videos.length > 0 &&
         videos.map((video) => (

@@ -1,37 +1,64 @@
-import { useDispatch } from "react-redux";
-import { imageLinks } from "../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
 import { togglesideBarMenu } from "../store/actions/sideBar.action";
+import { useEffect } from "react";
+import { getSearchSuggestion } from "../store/actions/search.action";
+import { YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/constants";
+import { useState } from "react";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { RiVideoAddLine } from "react-icons/ri";
+import { FaRegBell } from "react-icons/fa6";
+import { FaUserCircle } from "react-icons/fa";
+import { IoSearchOutline } from "react-icons/io5";
+import SearchSuggestionList from "./SearchSuggestionList";
 
 const Header = () => {
+  const [searchString, setSearchString] = useState("");
   const dispatch = useDispatch();
+
+  const searchSuggestionsData = useSelector((store) => store.search.searchSuggestions);
 
   const toggleSideMenuHandler = () => {
     dispatch(togglesideBarMenu());
   };
 
+  useEffect(() => {
+    const suggestionTimer = setTimeout(() => {
+      dispatch(getSearchSuggestion(YOUTUBE_SEARCH_SUGGESTION_API + searchString));
+    }, 100);
+    return () => {
+      clearTimeout(suggestionTimer);
+    };
+  }, [dispatch, searchString]);
+
+  const handleSearchSuggestions = (e) => {
+    setSearchString(e.target.value);
+  };
+
   return (
-    <section>
-      <div className="grid grid-flow-col p-5 shadow-lg">
-        <div className="flex col-span-1">
-          <img className="h-12" alt="menu" src={imageLinks.hamberg_Icon} onClick={toggleSideMenuHandler} />
-          <img className="h-12" alt="Youtube" src={imageLinks.Youtube_Icon} />
-        </div>
-        <div className="col-span-10 flex">
-          <input className="rounded-l-full border border-gray-400 w-1/2 p-2 h-12" type="text" />
-          <button
-            className="rounded-r-full border border-gray-400 w-14 p-2 h-12"
-            onClick={() => {
-              console.log("fiuuuuuuccckk");
-            }}
-          >
-            <img className="h-7 px-1" src={imageLinks.Search_Icon} />
-          </button>
-        </div>
-        <div className="col-span-1 h-12">
-          <img className="h-12" alt="menu" src={imageLinks.User_Icon} />
-        </div>
+    <div className="flex fixed justify-between items-center h-14 px-6 top-0 left-0 right-0 z-50 w-full bg-white">
+      <div className="flex items-center gap-6">
+        <RxHamburgerMenu className="cursor-pointer" onClick={toggleSideMenuHandler} />
+        <img src="./images/logo.png" alt="logo" className="h-5 bg-gray-300" />
       </div>
-    </section>
+      <div className="flex items-center justify-between">
+        <input
+          type="text"
+          placeholder="Search"
+          className="rounded-l-full border border-gray-400 p-2 h-12 w-[50rem] pl-5"
+          value={searchString}
+          onChange={handleSearchSuggestions}
+        />
+        <div className="rounded-r-full border border-gray-400 p-2 h-12 text-2xl flex items-center justify-center w-16 cursor-pointer">
+          <IoSearchOutline />
+        </div>
+        <SearchSuggestionList searchSuggestionsData={searchSuggestionsData} />
+      </div>
+      <div className="flex items-center gap-6">
+        <RiVideoAddLine className="cursor-pointer text-2xl" />
+        <FaRegBell className="cursor-pointer text-2xl" />
+        <FaUserCircle className="cursor-pointer text-2xl" />
+      </div>
+    </div>
   );
 };
 

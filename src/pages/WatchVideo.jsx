@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import SideBar from "../components/SideBar";
 import { useDispatch } from "react-redux";
 import { collapseSideBarMenu } from "../store/actions/sideBar.action";
 import { useSearchParams } from "react-router-dom";
@@ -13,8 +12,7 @@ const WatchVideo = () => {
   });
   return (
     <>
-      <div className="flex">
-        <SideBar />
+      <div className="flex pt-3 z-10 h-full mt-14 mx-3">
         <iframe
           width="1200"
           height="600"

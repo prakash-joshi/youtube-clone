@@ -1,19 +1,19 @@
 const VideoCard = (props) => {
-  const { contentDetails, snippet, statistics } = props?.info;
-  const { thumbnails, title, channelId, channelTitle } = snippet;
+  const { /*contentDetails,*/ snippet, statistics } = props?.info;
+  const { thumbnails, title, channelTitle } = snippet;
   const { viewCount } = statistics;
-  const { duration } = contentDetails;
+  // const { duration } = contentDetails;
 
   const truncateTitle = (title) => {
-    if (title.length > 40) {
-      return title.slice(0, 35) + "...";
+    if (title.length > 20) {
+      return title.slice(0, 15) + "...";
     } else {
       return title;
     }
   };
 
   return (
-    <div className="relative m-auto cursor-pointer">
+    <div className="relative cursor-pointer">
       <img src={thumbnails?.medium?.url} alt="thumbnail" className="rounded-xl" />
       {/* <span className="absolute bottom-1 right-1 bg-black text-xs font-medium px-1 py-[2px] rounded-lg text-cyan-100">
         {duration}
