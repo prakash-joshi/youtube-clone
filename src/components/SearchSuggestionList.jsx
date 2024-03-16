@@ -5,7 +5,7 @@ const SearchSuggestionList = (props) => {
   return (
     <Fragment>
       {searchSuggestionsData && searchSuggestionsData.length > 0 && (
-        <div className="fixed top-14 bg-white  border border-gray-300 rounded-3xl p-2  w-[50rem]">
+        <div className="fixed top-14 bg-white  border border-gray-300 rounded-xl p-2  w-[50rem]">
           <ul>
             {searchSuggestionsData.map((searchSuggestion) => {
               return (

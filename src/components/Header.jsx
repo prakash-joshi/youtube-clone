@@ -13,22 +13,30 @@ import SearchSuggestionList from "./SearchSuggestionList";
 
 const Header = () => {
   const [searchString, setSearchString] = useState("");
+  const [searchSuggestionsData, setSearchSuggestionsData] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const dispatch = useDispatch();
 
-  const searchSuggestionsData = useSelector((store) => store.search.searchSuggestions);
+  const searchSuggestionsDataStore = useSelector((store) => store.search.searchSuggestions);
 
   const toggleSideMenuHandler = () => {
     dispatch(togglesideBarMenu());
   };
 
   useEffect(() => {
+    const handleSearchSuggestion = () => {
+      if (!searchSuggestionsDataStore[searchString]) {
+        dispatch(getSearchSuggestion(YOUTUBE_SEARCH_SUGGESTION_API, searchString));
+      }
+    };
     const suggestionTimer = setTimeout(() => {
-      dispatch(getSearchSuggestion(YOUTUBE_SEARCH_SUGGESTION_API + searchString));
+      setSearchSuggestionsData(searchSuggestionsDataStore[searchString]);
+      handleSearchSuggestion();
     }, 100);
     return () => {
       clearTimeout(suggestionTimer);
     };
-  }, [dispatch, searchString]);
+  }, [dispatch, searchString, searchSuggestionsDataStore]);
 
   const handleSearchSuggestions = (e) => {
     setSearchString(e.target.value);
@@ -47,11 +55,17 @@ const Header = () => {
           className="rounded-l-full border border-gray-400 p-2 h-12 w-[50rem] pl-5"
           value={searchString}
           onChange={handleSearchSuggestions}
+          onFocus={() => {
+            setShowSuggestions(true);
+          }}
+          onBlur={() => {
+            setShowSuggestions(false);
+          }}
         />
         <div className="rounded-r-full border border-gray-400 p-2 h-12 text-2xl flex items-center justify-center w-16 cursor-pointer">
           <IoSearchOutline />
         </div>
-        <SearchSuggestionList searchSuggestionsData={searchSuggestionsData} />
+        {showSuggestions && <SearchSuggestionList searchSuggestionsData={searchSuggestionsData} />}
       </div>
       <div className="flex items-center gap-6">
         <RiVideoAddLine className="cursor-pointer text-2xl" />
