@@ -62,6 +62,14 @@ const Header = () => {
             setShowSuggestions(false);
           }}
         />
+        {searchString && (
+          <span
+            className="absolute z-50 font-bold text-gray-500 hover:text-gray-900 cursor-pointer ml-[48rem]"
+            onClick={() => setSearchString("")}
+          >
+            ╳
+          </span>
+        )}
         <div className="rounded-r-full border border-gray-400 p-2 h-12 text-2xl flex items-center justify-center w-16 cursor-pointer">
           <IoSearchOutline />
         </div>
