@@ -3,6 +3,7 @@ export default {
   videoList: {},
   search: {
     searchSuggestions: {},
+    searchResultVideo: {},
   },
   commentsList: {},
 };

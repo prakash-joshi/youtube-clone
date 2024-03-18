@@ -38,10 +38,6 @@ const Header = () => {
     };
   }, [dispatch, searchString, searchSuggestionsDataStore]);
 
-  const handleSearchSuggestions = (e) => {
-    setSearchString(e.target.value);
-  };
-
   return (
     <div className="flex fixed justify-between items-center h-14 px-6 top-0 left-0 right-0 z-50 w-full bg-white">
       <div className="flex items-center gap-6">
@@ -54,13 +50,8 @@ const Header = () => {
           placeholder="Search"
           className="rounded-l-full border border-gray-400 p-2 h-12 w-[50rem] pl-5"
           value={searchString}
-          onChange={handleSearchSuggestions}
-          onFocus={() => {
-            setShowSuggestions(true);
-          }}
-          onBlur={() => {
-            setShowSuggestions(false);
-          }}
+          onChange={(e) => setSearchString(e.target.value)}
+          onFocus={() => setShowSuggestions(true)}
         />
         {searchString && (
           <span
@@ -73,7 +64,14 @@ const Header = () => {
         <div className="rounded-r-full border border-gray-400 p-2 h-12 text-2xl flex items-center justify-center w-16 cursor-pointer">
           <IoSearchOutline />
         </div>
-        {showSuggestions && <SearchSuggestionList searchSuggestionsData={searchSuggestionsData} />}
+        {showSuggestions && (
+          <SearchSuggestionList
+            searchSuggestionsData={searchSuggestionsData}
+            showSuggestions={showSuggestions}
+            setShowSuggestions={setShowSuggestions}
+            setSearchString={setSearchString}
+          />
+        )}
       </div>
       <div className="flex items-center gap-6">
         <RiVideoAddLine className="cursor-pointer text-2xl" />

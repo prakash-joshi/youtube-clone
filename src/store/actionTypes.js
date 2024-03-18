@@ -7,6 +7,7 @@ export const GET_VIDEO_LIST = "GET_VIDEO_LIST";
 
 // searchbar action types
 export const GET_YOUTUBE_SEARCH_SUGGESTIONS = "GET_YOUTUBE_SEARCH_SUGGESTIONS";
+export const GET_SEARCH_RESULT_VIDEOS = "GET_SEARCH_RESULT_VIDEOS";
 
 // comments action types
 export const GET_VIDEO_COMMENTS = "GET_VIDEO_COMMENTS";

@@ -11,3 +11,15 @@ export const getSearchSuggestion = (url, searchString) => {
     },
   };
 };
+
+export const getSearchResultVideos = (url, searchString) => {
+  return {
+    type: types.GET_SEARCH_RESULT_VIDEOS,
+    meta: {
+      type: "api",
+      method: "GET",
+      url,
+      searchString,
+    },
+  };
+};
