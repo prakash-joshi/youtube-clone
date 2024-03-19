@@ -23,11 +23,11 @@ const VideoSuggestions = (props) => {
   const { snippet } = props?.info;
   const { thumbnails, title, channelTitle } = snippet;
   return (
-    <div className=" flex relative cursor-pointer">
-      <img src={thumbnails?.medium?.url} alt="thumbnail" className="rounded-xl" />
+    <div className=" flex relative">
+      <img src={thumbnails?.medium?.url} alt="thumbnail" className="cursor-pointer rounded-xl" />
 
       <div className="text-wrap mx-6">
-        <p>{title}</p>
+        <p className="cursor-pointer">{title}</p>
         <p>{channelTitle}</p>
       </div>
     </div>

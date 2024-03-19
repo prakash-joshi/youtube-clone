@@ -5,7 +5,7 @@ const SideBar = () => {
   return (
     sideBarMenu &&
     sideBarMenu?.isSideMenuExpanded && (
-      <div className="fixed w-[14%] pt-3 top-14 left-0 pr-6 pl-2 h-full overflow-y-auto bg-white z-50">
+      <div className="fixed w-[14%] pt-3 top-14 left-0 pr-6 pl-2 h-[93%] overflow-y-scroll bg-white z-50">
         {/* <h1 className="font-bold">Home</h1> */}
         <img className="pr-4" src="./home.svg" alt="home" /> Home
         <h1 className="font-bold">Shorts</h1>
