@@ -18,5 +18,6 @@ module.exports = {
     semi: ["error", "always"],
     quotes: ["error", "double"],
     "no-unsafe-optional-chaining": "off",
+    "no-case-declarations": "off",
   },
 };
